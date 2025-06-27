@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 
-// Possible statuses
+
 export type DeviceStatus = 'active' | 'inactive' | 'error';
 
-// Device model
+
 export interface Device {
   id: string;
   name: string;
@@ -13,42 +13,54 @@ export interface Device {
   location: string;
 }
 
-const devices: Device[] = [];
+export class DeviceRepository {
+  private devices: Device[] = [
+    {
+      id: "364cb270-98d3-46b3-8355-6b6b7b9b08ae",
+      name: "laptop001",
+      type: "PC",
+      ip: "192.168.1.100",
+      status: 'active',
+      location: "office-1"
+    },
+    {
+      id: "06524a47-ac0f-4026-8f07-2c822188649d",
+      name: "phone123",
+      type: "Phone",
+      ip: "192.168.1.101",
+      status: 'active',
+      location: "offsite"
+    }
+  ];
 
-export const getAllDevices = (): Device[] => {
-  return devices;
-}
-
-export const addDevice = (
-  data: Omit<Device, 'id' |'status'>
-): Device => {
-  const newDevice: Device = {
-    id: uuidv4(),
-    status: 'active',
-    ...data
-  };
-  devices.push(newDevice);
-  return newDevice;
-}
-
-export const removeDevice = (id: string): boolean => {
-  const index = devices.findIndex((d) => d.id === id);
-  if (index === -1) return false;
-  devices.splice(index, 1);
-  return true;
-}
-
-export const updateDeviceStatus = (id: string, status: DeviceStatus): boolean => {
-  const device = devices.find((d) => d.id === id);
-  if (!device) return false;
-  device.status = status;
-  return true;
-};
-
-// Optional: update all statuses randomly
-export const randomizeStatuses = (): void => {
-  const statuses: DeviceStatus[] = ['active', 'inactive', 'error'];
-  for (const device of devices) {
-    device.status = statuses[Math.floor(Math.random() * statuses.length)];
+  getAllDevices() {
+    return this.devices;
   }
-};
+
+  addDevice = (
+    data: Omit<Device, 'id' | 'status'>
+  ): Device => {
+    const newDevice: Device = {
+      id: uuidv4(),
+      status: 'active',
+      ...data
+    };
+    this.devices.push(newDevice);
+    return newDevice;
+  }
+
+  removeDevice = (id: string): boolean => {
+    const index = this.devices.findIndex((d) => d.id === id);
+    if (index === -1) return false;
+    this.devices.splice(index, 1);
+    return true;
+  }
+
+  updateDeviceStatus = (id: string, status: DeviceStatus): boolean => {
+    const device = this.devices.find((d) => d.id === id);
+    if (!device) return false;
+    device.status = status;
+    return true;
+  };
+
+}
