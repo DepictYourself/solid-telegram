@@ -19,13 +19,29 @@ export class DeviceRepository {
       id: "364cb270-98d3-46b3-8355-6b6b7b9b08ae",
       name: "laptop001",
       type: "PC",
-      ip: "192.168.1.100",
+      ip: "192.168.1.20",
+      status: 'active',
+      location: "office-1"
+    },
+    {
+      id: "364cb270-98d3-46b3-8355-6b6b7b9b08ae",
+      name: "laptop002",
+      type: "PC",
+      ip: "192.168.1.21",
       status: 'active',
       location: "office-1"
     },
     {
       id: "06524a47-ac0f-4026-8f07-2c822188649d",
       name: "phone123",
+      type: "Phone",
+      ip: "192.168.1.100",
+      status: 'active',
+      location: "offsite"
+    },
+    {
+      id: "06524a47-ac0f-4026-8f07-2c822188649d",
+      name: "phone456",
       type: "Phone",
       ip: "192.168.1.101",
       status: 'active',

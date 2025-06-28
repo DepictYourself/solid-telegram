@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()" class="p-fluid mb-5">
+  <div class="flex align-items-center justify-content-start" style="gap: 1rem">
+    <div class="field md:col-3">
+      <label for="name">Name</label>
+      <input id="name" pInputText formControlName="name" />
+    </div>
+  
+    <div class="field md:col-3">
+      <label for="type">Type</label>
+      <input id="type" pInputText formControlName="type" />
+    </div>
+  
+    <div class="field md:col-3">
+      <label for="ip">IP</label>
+      <input id="ip" pInputText formControlName="ip" />
+    </div>
+  
+    <div class="field md:col-3">
+      <label for="location">Location</label>
+      <input id="location" pInputText formControlName="location" />
+    </div>
+  </div>
+
+  <div class="col-12 text-left">
+    <p-button type="submit" label="Add Device" [disabled]="form.invalid"></p-button>
+  </div>
+</form>
